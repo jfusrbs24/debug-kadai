@@ -59,8 +59,8 @@
 
         // 入力フォームの値をタイマーに表示する関数
         function updateTimer() {
-            let minutes = document.getElementById('minutes').value;
-            let seconds = document.getElementById('seconds').value;
+            let minutes = document.getElementById('minutes').value || 0;
+            let seconds = document.getElementById('seconds').value || 0;
 
             // 入力フォームの値をチェック
             if (minutes < 0 || seconds < 0) {
@@ -75,7 +75,7 @@
 
         // カウントダウンを開始する関数
         function startCountdown() {
-            isPaused = false
+            isPaused = false;
             let minutes = document.getElementById('minutes').value || 0;
             let seconds = document.getElementById('seconds').value || 0;
             let timeLeft = (minutes * 60) + parseInt(seconds);
@@ -111,6 +111,7 @@
         function resetCountdown() {
             clearInterval(countdownInterval);
             setMode("restart");
+            updateTimer();
         }
 
         // 時間設定モードに変更する関数
